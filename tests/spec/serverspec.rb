@@ -5,10 +5,6 @@ set :os, family: :debian
 set :backend, :docker
 set :docker_image, 'louisbilliet/transmission:testing'
 
-describe port('51413') do
-  it { should be_listening }
-end
-
 describe process('transmission-daemon') do
   it { should be_running }
 end
