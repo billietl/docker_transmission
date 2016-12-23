@@ -5,14 +5,6 @@ set :os, family: :debian
 set :backend, :docker
 set :docker_image, 'louisbilliet/transmission:testing'
 
-describe package('transmission-daemon') do
-  it { should be_installed }
-end
-
-describe port('9091') do
-  it { should be_listening.with('tcp') }
-end
-
 describe port('51413') do
   it { should be_listening }
 end
