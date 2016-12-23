@@ -1,0 +1,19 @@
+language: python
+services: docker
+env:
+  image_name="louisbilliet/transmission"
+install:
+  - bundle install
+before_script:
+  - docker build -t ${image_name}:testing .
+script:
+  - docker run -d --name transmission --publish 9091/tcp --publish 51413 -v $(pwd)/finished:/transmission/finished ${image_name}:testing
+  - bundle exec rspec tests/spec/serverspec.rb
+after_success:
+  - if [ ${TRAVIS_BRANCH} = 'master' ]; then docker tag ${image_name}:testing ${image_name}:latest; fi
+  - if [ ${TRAVIS_BRANCH} = 'master' ]; then docker login -u ${docker_hub_login} -p ${docker_hub_passwd}; fi
+  - if [ ${TRAVIS_BRANCH} = 'master' ]; then docker push ${image_name}:latest; fi
+after_script:
+  - docker stop transmission
+  - docker rm transmission
+  - docker rmi ${image_name}:testing ${image_name}:lastest
