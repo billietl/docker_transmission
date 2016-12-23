@@ -1,6 +1,6 @@
 ![Travis CI](https://travis-ci.org/billietl/docker_transmission.svg)
 
-# louisbilliet/transmission.svg:latest
+# louisbilliet/transmission
 `Dockerfile` to create a [Docker](http://www.docker.com) container image for [transmission](https://transmissionbt.com/) bittorrent client.
 
 ## Contributing
