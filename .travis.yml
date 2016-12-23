@@ -7,7 +7,7 @@ install:
 before_script:
   - docker build -t ${image_name}:testing .
 script:
-  - docker run -d --name transmission --publish 9091/tcp --publish 51413 -v $(pwd)/finished:/transmission/finished ${image_name}:testing
+  - docker run -d --name transmission --publish 9091:9091/tcp --publish 51413:51413 -v $(pwd)/finished:/transmission/finished ${image_name}:testing
   - bundle exec rspec tests/spec/serverspec.rb
 after_success:
   - if [ ${TRAVIS_BRANCH} = 'master' ]; then docker tag ${image_name}:testing ${image_name}:latest; fi

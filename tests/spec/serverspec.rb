@@ -23,8 +23,8 @@ end
 
 describe file('/transmission/scripts/copy_finished.sh') do
   [
-    'cp -r "${TR_TORRENT_DIR}/${TR_TORRENT_NAME}" "/home/${TR_TORRENT_NAME}"',
-    'chmod -R 777 "/home/${TR_TORRENT_NAME}"',
+    'cp -r "${TR_TORRENT_DIR}/${TR_TORRENT_NAME}" "/transmission/finished/${TR_TORRENT_NAME}"',
+    'chmod -R 777 "/transmission/finished/${TR_TORRENT_NAME}"',
   ].each do |line|
     its(:content) { should match /^\s*#{Regexp.escape(line)}/ }
   end
@@ -40,7 +40,7 @@ describe file('/transmission/config/settings.json') do
     '"alt-speed-time-day": 127,',
     '"alt-speed-time-enabled": true,',
     '"bind-address-ipv4": "0.0.0.0",',
-    '"blocklist-enabled": false,',
+    '"blocklist-enabled": true,',
     '"blocklist-url": "http://list.iblocklist.com/?list=bt_level1&fileformat=p2p&archiveformat=gz",',
     '"cache-size-mb": 16,',
     '"dht-enabled": false,',
@@ -75,11 +75,9 @@ describe file('/transmission/config/settings.json') do
     '"rpc-authentication-required": false,',
     '"rpc-bind-address": "0.0.0.0",',
     '"rpc-enabled": true,',
-    '"rpc-password": "",',
     '"rpc-port": 9091,',
     '"rpc-url": "/transmission/",',
     '"rpc-username": "",',
-    '"rpc-whitelist": "192.168.*.*,127.*.*.*,10.*.*.*,172.16.*.*,172.17.*.*,172.18.*.*,172.19.*.*,172.20.*.*,172.21.*.*,172.22.*.*,172.23.*.*,172.24.*.*,172.25.*.*,172.26.*.*,172.27.*.*,172.28.*.*,172.29.*.*,172.30.*.*,172.31.*.*",',
     '"rpc-whitelist-enabled": true,',
     '"scrape-paused-torrents-enabled": true,',
     '"script-torrent-done-enabled": true,',
