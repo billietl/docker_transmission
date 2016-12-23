@@ -15,7 +15,7 @@ end
 
 describe port('51413') do
   it { should be_listening }
-done
+end
 
 describe process('transmission-daemon') do
   it { should be_running }
