@@ -37,7 +37,7 @@ describe file('/transmission/config/settings.json') do
     '"download-limit-enabled": 0,',
     '"download-queue-enabled": true,',
     '"download-queue-size": 5,',
-    '"encryption": 1,',
+    '"encryption": 2,',
     '"idle-seeding-limit": 30,',
     '"idle-seeding-limit-enabled": false,',
     '"lpd-enabled": true,',
