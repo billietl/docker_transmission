@@ -8,7 +8,7 @@ RUN mkdir -p /transmission/download \
              /transmission/finished \
              /transmission/config &&  \
     chmod -R 1777 /transmission
-VOLUME ['/transmission/download','/transmission/finished']
+VOLUME ['/transmission/download','/transmission/finished','/transmission/incomplete']
 
 RUN apt-get update && \
     apt-get install -y transmission-daemon && \

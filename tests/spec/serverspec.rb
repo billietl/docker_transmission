@@ -40,6 +40,7 @@ describe file('/transmission/config/settings.json') do
     '"encryption": 1,',
     '"idle-seeding-limit": 30,',
     '"idle-seeding-limit-enabled": false,',
+    '"incomplete-dir": "/transmission/incomplete",',
     '"lpd-enabled": true,',
     '"max-peers-global": 200,',
     '"message-level": 1,',
